@@ -158,15 +158,13 @@ class RobolectricLifeCycleListener(
         try {
             parallelUniverseInterface!!.tearDownApplication()
         } finally {
-            try {
-                //                internalAfterTest(method, bootstrappedMethod);
-            } finally {
-                parallelUniverseInterface!!.resetStaticState(
+            parallelUniverseInterface!!.resetStaticState(
                     config) // afterward too, so stuff doesn't hold on to classes?
-            }
         }
         parallelUniverseInterface!!.setMainThread(orig);
         Thread.currentThread().contextClassLoader = priorContextClassLoader
+        parallelUniverseInterface = null
+        testLifecycle = null
     }
 
     /**

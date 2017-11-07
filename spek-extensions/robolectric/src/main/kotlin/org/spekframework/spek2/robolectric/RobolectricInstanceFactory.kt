@@ -183,7 +183,7 @@ object RobolectricInstanceFactory : InstanceFactory {
 
     private fun pickSdkVersion(config: Config?, manifest: AndroidManifest?): Int {
         return if (config != null && config.sdk.size > 1) {
-            throw IllegalArgumentException("Robospock does not support multiple values for @Config.sdk")
+            throw IllegalArgumentException("Spek does not support multiple values for @Config.sdk")
         } else if (config != null && config.sdk.size == 1) {
             config.sdk[0]
         } else manifest?.targetSdkVersion ?: SdkConfig.FALLBACK_SDK_VERSION
